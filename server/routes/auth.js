@@ -2,9 +2,16 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/user.js';
+import User from '../models/User.js';
 
 const r = Router();
+
+const sign = user =>
+  jwt.sign(
+    { id: user._id.toString(), uid: user._id.toString() },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
 
 // Register
 r.post('/register', async (req, res) => {
@@ -33,9 +40,16 @@ r.post('/register', async (req, res) => {
       password: hashedPassword
     });
 
+    const token = sign(user);
+
     res.status(201).json({
       message: 'Registration successful',
-      user: { id: user._id, name: user.name, email: user.email }
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
     });
   } catch (err) {
     res.status(500).json({ error: 'Registration failed' });
@@ -54,15 +68,16 @@ r.post('/login', async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
-      { uid: user._id.toString() },
-      process.env.JWT_SECRET,
-      { expiresIn: '1d' }
-    );
+    const token = sign(user);
 
     res.json({
       message: 'Login successful',
-      token
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
     });
   } catch (err) {
     res.status(500).json({ error: 'Login failed' });

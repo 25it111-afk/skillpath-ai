@@ -1,8 +1,12 @@
-
+/**
+ * ARCHIVED / LEGACY FILE:
+ * Note: Active authentication routing is handled by server/routes/auth.js.
+ * This file is retained for reference and is not mounted in server.js.
+ */
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import User from './models/User.js';
 
 const router = Router();
 
