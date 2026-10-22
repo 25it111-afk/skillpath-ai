@@ -5,8 +5,8 @@ Hack-A-Throne | National Hackathon 2026 · Domain: EdTech & Future of Learning �
 
 | | |
 |---|---|
-| 🌐 Live demo | [ADD LIVE LINK] |
-| 🎥 Demo video | [ADD GOOGLE DRIVE LINK] |
+| 🌐 Live demo | https://skillpath-ai-api.onrender.com |
+| 🎥 Demo video | https://drive.google.com/file/d/1MErwxfuv1fqUwi5M4msiTrAg8G4fJnsY/view?usp=sharing |
 | 👥 Team | Suvetha S, Annamaneni Venkata Pardhu |
 
 ## The problem
